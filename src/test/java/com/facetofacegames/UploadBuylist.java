@@ -28,7 +28,6 @@ public class UploadBuylist extends TestUtilities{
 		BuylistPage buylistPage = new BuylistPage(driver, log);
 		
 		//buylistPage.provideTestData();
-		System.out.println("Testing commit"); //aaaaaaaaaaaaaaaaaaaaaaa
 		
 		buylistPage.openPage();
 		
