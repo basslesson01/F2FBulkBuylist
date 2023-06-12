@@ -27,7 +27,7 @@ public class UploadBuylist extends TestUtilities{
 		
 		BuylistPage buylistPage = new BuylistPage(driver, log);
 		
-		buylistPage.provideTestData();
+		//buylistPage.provideTestData();
 		
 		buylistPage.openPage();
 		
