@@ -6,7 +6,7 @@
     <classes>
       <class name="com.facetofacegames.UploadBuylist">
         <methods>
-          <include name="uploadBuylist" invocation-numbers="1"/>
+          <include name="uploadBuylist" invocation-numbers="1 2"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>

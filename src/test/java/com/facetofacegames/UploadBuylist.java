@@ -27,24 +27,32 @@ public class UploadBuylist extends TestUtilities{
 		
 		BuylistPage buylistPage = new BuylistPage(driver, log);
 		
-		//buylistPage.provideTestData();
-		
 		buylistPage.openPage();
 		
-        
+		try {
+			int csvLength = buylistPage.provideTestData().length;
+			System.out.println("csvLength: " + csvLength);
+			buylistPage.addToCart(quantity, name, edition, foil);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
         //WebElement editionElement = driver.findElement(By.xpath("//p[@class='card-set']"));
         //List<WebElement> allCards = driver.findElements(By.xpath("//p[@class='card-set']"));
         //for(int i = 0; i < allCards.size(); i++) {
         //	System.out.println("Set is: " + allCards.get(i).getText());
         //}
-        buylistPage.addToCart(quantity, name, edition, foil);
-        
+		//List<WebElement> allCards = driver.findElements(By.xpath("//p[@class='card-set']"));
+		//for(int i = 0; i < allCards.size(); i++) {
+		//	buylistPage.addToCart(quantity, name, edition, foil);
+		//	System.out.println("In for loop");
+		//}
         System.out.println("Quantity: " + quantity);
         System.out.println("Name: " + name);
         System.out.println("Edition: " + edition);
         System.out.println("Foil: " + foil);
         sleep(1500);
-       
+        
 	}
 
 }

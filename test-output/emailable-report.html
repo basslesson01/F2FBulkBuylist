@@ -9,33 +9,13 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Debug</th></tr>
-<tr><td><a href="#t0">Buylist Upload</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">6,062</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Buylist Upload</a></td><td class="num">4</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">92,976</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Debug</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Buylist Upload &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.facetofacegames.UploadBuylist</td><td><a href="#m0">uploadBuylist</a></td><td rowspan="1">1686524424868</td><td rowspan="1">1923</td></tr><tr><th colspan="4">Buylist Upload &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.facetofacegames.UploadBuylist</td><td><a href="#m1">uploadBuylist</a></td><td rowspan="1">1686524420774</td><td rowspan="1">4092</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Debug</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Buylist Upload &#8212; passed</th></tr><tr class="passedeven"><td rowspan="4">com.facetofacegames.UploadBuylist</td><td><a href="#m0">uploadBuylist</a></td><td rowspan="4">1686615813421</td><td rowspan="4">70350</td></tr><tr class="passedeven"><td><a href="#m1">uploadBuylist</a></td></tr><tr class="passedeven"><td><a href="#m2">uploadBuylist</a></td></tr><tr class="passedeven"><td><a href="#m3">uploadBuylist</a></td></tr></tbody>
 </table>
-<h2>Buylist Upload</h2><h3 id="m0">com.facetofacegames.UploadBuylist#uploadBuylist</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>1</td><td>Emrakul, the Aeons Torn</td><td>Pro Tour Promos</td><td>Non-Foil</td></tr><tr><th colspan="4">Exception</th></tr><tr><td colspan="4"><div class="stacktrace">org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
-  (Session info: chrome=114.0.5735.110)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
-Build info: version: &apos;4.8.1&apos;, revision: &apos;8ebccac989&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [21b88a6eb7a3b94bf2558321251c6eed, getElementText {id=2AC7E549B5A1FB82DDAE26704711F7FA_element_135}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.110, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Users\leon_\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:62689}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62689/devtoo..., se:cdpVersion: 114.0.5735.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (21b88a6eb7a3b94bf2558321251c6eed)] -&gt; xpath: //p[@class=&apos;card-set&apos;]]
-Session ID: 21b88a6eb7a3b94bf2558321251c6eed
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
-	at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:207)
-	at com.facetofacegames.pages.BuylistPage.addToCart(BuylistPage.java:112)
-	at com.facetofacegames.UploadBuylist.uploadBuylist(UploadBuylist.java:42)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.facetofacegames.UploadBuylist#uploadBuylist</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>1</td><td>Ulamog, the Ceaseless Hunger</td><td>Battle for Zendikar</td><td>Non-Foil</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Buylist Upload</h2><h3 id="m0">com.facetofacegames.UploadBuylist#uploadBuylist</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>1</td><td>Emrakul, the Aeons Torn</td><td>Pro Tour Promos</td><td>Non-Foil</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.facetofacegames.UploadBuylist#uploadBuylist</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>2</td><td>Wear // Tear</td><td>March of the Machine: Commander</td><td>Non-Foil</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">com.facetofacegames.UploadBuylist#uploadBuylist</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>1</td><td>Ulamog, the Ceaseless Hunger</td><td>Battle for Zendikar</td><td>Non-Foil</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">com.facetofacegames.UploadBuylist#uploadBuylist</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>1</td><td>Kozilek, Butcher of Truth</td><td>Rise of the Eldrazi</td><td>Non-Foil</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

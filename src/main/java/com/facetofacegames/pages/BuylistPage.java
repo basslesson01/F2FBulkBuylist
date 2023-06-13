@@ -57,7 +57,7 @@ public class BuylistPage extends BasePageObject{
 	@DataProvider(name = "csvData")
     public Object[][] provideTestData() throws Exception {
 		String csvFile = "src/test/resources/test.csv";
-		CSVReader csvReader = new CSVReaderBuilder(new FileReader(csvFile)).withSkipLines(1).build();
+		CSVReader csvReader = new CSVReaderBuilder(new FileReader(csvFile)).withSkipLines(1).build(); // Removes header
 
         List<String[]> csvData = csvReader.readAll();
         csvReader.close();
@@ -107,15 +107,16 @@ public class BuylistPage extends BasePageObject{
 	public void addToCart(String quantity, String cardName, String edition, String foil) {
 		searchCard(cardName);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        for(int i = 0; i < cardEditions.size(); i++) {
-        	System.out.println("Yeet");
-        	System.out.println("addToCard is returning: " + cardEditions.get(i).getText());
+		
+		// The for loop below is breaking the code. Need to fix
+        //for(int i = 0; i < cardEditions.size(); i++) {
+        	//System.out.println("addToCard is returning: " + cardEditions.get(i).getText());
         	int quant = Integer.parseInt(quantity);
         	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));
-        	if(cardEditions.get(i).getText() == edition) {
+        	//if(cardEditions.get(i).getText() == edition) {
         		//System.out.println("addToCard is returning: " + cardEditions.get(i).getText());
-        	}
-        }
+        //	}
+        //}
 	}
 
 }

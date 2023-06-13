@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-11T20:00:20 ADT" name="Debug" finished-at="2023-06-11T20:00:26 ADT" duration-ms="6062">
+  <suite started-at="2023-06-12T21:23:33 ADT" name="Debug" finished-at="2023-06-12T21:25:06 ADT" duration-ms="92976">
     <groups>
     </groups>
-    <test started-at="2023-06-11T20:00:20 ADT" name="Buylist Upload" finished-at="2023-06-11T20:00:26 ADT" duration-ms="6062">
+    <test started-at="2023-06-12T21:23:33 ADT" name="Buylist Upload" finished-at="2023-06-12T21:25:06 ADT" duration-ms="92976">
       <class name="com.facetofacegames.UploadBuylist">
-        <test-method is-config="true" signature="setUp(java.lang.reflect.Method,java.lang.String,java.lang.String,java.lang.String,org.testng.ITestContext)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-11T20:00:19 ADT" name="setUp" finished-at="2023-06-11T20:00:20 ADT" duration-ms="1306" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.reflect.Method,java.lang.String,java.lang.String,java.lang.String,org.testng.ITestContext)[pri:0, instance:com.facetofacegames.UploadBuylist@6771beb3]" started-at="2023-06-12T21:23:32 ADT" name="setUp" finished-at="2023-06-12T21:23:33 ADT" duration-ms="1329" status="PASS">
           <params>
             <param index="0">
               <value is-null="true"/>
@@ -25,14 +25,40 @@
             </param>
             <param index="4">
               <value>
-                <![CDATA[org.testng.TestRunner@149c3204]]>
+                <![CDATA[org.testng.TestRunner@b16e202]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-11T20:00:20 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-11T20:00:24 ADT" duration-ms="4092" status="PASS">
+        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@6771beb3]" started-at="2023-06-12T21:23:33 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-12T21:24:43 ADT" duration-ms="70350" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Emrakul, the Aeons Torn]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Pro Tour Promos]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Non-Foil]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- uploadBuylist -->
+        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@6771beb3]" started-at="2023-06-12T21:24:43 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-12T21:24:57 ADT" duration-ms="14121" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -58,7 +84,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- uploadBuylist -->
-        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-11T20:00:24 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-11T20:00:26 ADT" duration-ms="1923" status="FAIL">
+        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@6771beb3]" started-at="2023-06-12T21:24:57 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-12T21:25:01 ADT" duration-ms="4054" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -67,12 +93,12 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[Emrakul, the Aeons Torn]]>
+                <![CDATA[Kozilek, Butcher of Truth]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[Pro Tour Promos]]>
+                <![CDATA[Rise of the Eldrazi]]>
               </value>
             </param>
             <param index="3">
@@ -81,81 +107,36 @@
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.StaleElementReferenceException">
-            <message>
-              <![CDATA[stale element reference: stale element not found
-  (Session info: chrome=114.0.5735.110)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
-Build info: version: '4.8.1', revision: '8ebccac989'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [21b88a6eb7a3b94bf2558321251c6eed, getElementText {id=2AC7E549B5A1FB82DDAE26704711F7FA_element_135}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.110, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Users\leon_\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:62689}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62689/devtoo..., se:cdpVersion: 114.0.5735.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (21b88a6eb7a3b94bf2558321251c6eed)] -> xpath: //p[@class='card-set']]
-Session ID: 21b88a6eb7a3b94bf2558321251c6eed]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
-  (Session info: chrome=114.0.5735.110)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
-Build info: version: '4.8.1', revision: '8ebccac989'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [21b88a6eb7a3b94bf2558321251c6eed, getElementText {id=2AC7E549B5A1FB82DDAE26704711F7FA_element_135}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.110, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Users\leon_\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:62689}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62689/devtoo..., se:cdpVersion: 114.0.5735.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (21b88a6eb7a3b94bf2558321251c6eed)] -> xpath: //p[@class='card-set']]
-Session ID: 21b88a6eb7a3b94bf2558321251c6eed
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
-at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:207)
-at com.facetofacegames.pages.BuylistPage.addToCart(BuylistPage.java:112)
-at com.facetofacegames.UploadBuylist.uploadBuylist(UploadBuylist.java:42)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:829)
-at org.testng.TestRunner.run(TestRunner.java:602)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
-at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-at org.testng.TestNG.runSuites(TestNG.java:1099)
-at org.testng.TestNG.run(TestNG.java:1067)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.StaleElementReferenceException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- uploadBuylist -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-11T20:00:26 ADT" name="tearDown" finished-at="2023-06-11T20:00:26 ADT" duration-ms="95" status="PASS">
+        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@6771beb3]" started-at="2023-06-12T21:25:01 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-12T21:25:06 ADT" duration-ms="4398" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Wear // Tear]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[March of the Machine: Commander]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Non-Foil]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- uploadBuylist -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.facetofacegames.UploadBuylist@6771beb3]" started-at="2023-06-12T21:25:06 ADT" name="tearDown" finished-at="2023-06-12T21:25:06 ADT" duration-ms="127" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
