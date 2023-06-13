@@ -3,6 +3,7 @@ Uploading .csv bulk list of MTG cards to Face2Face website.
 
 
 Use .csv file exported by MTG Card Scanner Delver Lens on Android.
+
 Remove 'x' for all items in QuantityX column.
 - Can be done with google sheet or Excel. Just substitute 'x' with blank space (i.e. '').
 
