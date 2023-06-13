@@ -52,6 +52,7 @@ public class UploadBuylist extends TestUtilities{
         System.out.println("Edition: " + edition);
         System.out.println("Foil: " + foil);
         //sleep(1500);
+        System.out.println("Test output");
         
 	}
 
