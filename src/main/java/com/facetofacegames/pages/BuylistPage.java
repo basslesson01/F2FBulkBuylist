@@ -31,11 +31,11 @@ public class BuylistPage extends BasePageObject{
 	private By cart = By.xpath("//div[@class='navPages-item navPages-item--cart']");
 	
 	// Search result of all the cards. Might not need it?
-	private List<WebElement> allCards = driver.findElements(By.xpath("//li[@class='product']"));
+	//private List<WebElement> allCards = driver.findElements(By.xpath("//li[@class='product']"));
 	
 	// Edition of cards
 	// Since card searching is already done by searchCard(), we can assume that the result page just has the same cards from different editions
-	private List<WebElement> cardEditions = driver.findElements(By.xpath("//p[@class='card-set']")); 
+	//private List<WebElement> cardEditions = driver.findElements(By.xpath("//p[@class='card-set']")); 
 	
 	private By conNearmint = By.xpath("//label[text()='NM']"); // Radial button for Near Mint condition cards
 	private By conPlayed = By.xpath("//label[text()='PL']"); // Radial button for Played condition cards
@@ -84,6 +84,7 @@ public class BuylistPage extends BasePageObject{
 	 *  so this method is required to wrap the card names with quotation marks,
 	 *  to bypass such limitation
 	 *  and remove them when actually searching with the names.
+	 *  With that being said, there's probably an easier way to do this.
 	 */
 	private String[] parseCSVLine(String line) {
 		List<String> columns = new ArrayList<>();
@@ -108,15 +109,19 @@ public class BuylistPage extends BasePageObject{
 		searchCard(cardName);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		
-		// The for loop below is breaking the code. Need to fix
-        //for(int i = 0; i < cardEditions.size(); i++) {
-        	//System.out.println("addToCard is returning: " + cardEditions.get(i).getText());
-        	int quant = Integer.parseInt(quantity);
-        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));
-        	//if(cardEditions.get(i).getText() == edition) {
-        		//System.out.println("addToCard is returning: " + cardEditions.get(i).getText());
-        //	}
-        //}
+		// Have to be declared here because they become stale :(
+		List<WebElement> allCards = driver.findElements(By.xpath("//li[@class='product']"));
+		List<WebElement> cardEditions = driver.findElements(By.xpath("//p[@class='card-set']")); 
+		
+        int quant = Integer.parseInt(quantity);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
+        
+        for(int i = 0; i < cardEditions.size(); i++) {
+        	String currentEdition = cardEditions.get(i).getText();
+        	if(currentEdition.equals(edition)) {
+        		System.out.println("Current edition is: " + edition);
+        	}
+        }
 	}
 
 }

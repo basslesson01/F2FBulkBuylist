@@ -31,7 +31,7 @@ public class UploadBuylist extends TestUtilities{
 		
 		try {
 			int csvLength = buylistPage.provideTestData().length;
-			System.out.println("csvLength: " + csvLength);
+			//System.out.println("csvLength: " + csvLength);
 			buylistPage.addToCart(quantity, name, edition, foil);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -52,7 +52,6 @@ public class UploadBuylist extends TestUtilities{
         System.out.println("Edition: " + edition);
         System.out.println("Foil: " + foil);
         //sleep(1500);
-        System.out.println("Test output");
         
 	}
 
