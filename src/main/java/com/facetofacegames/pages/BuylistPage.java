@@ -37,10 +37,10 @@ public class BuylistPage extends BasePageObject{
 	// Since card searching is already done by searchCard(), we can assume that the result page just has the same cards from different editions
 	//private List<WebElement> cardEditions = driver.findElements(By.xpath("//p[@class='card-set']")); 
 	
-	private By conNearmint = By.xpath("//label[text()='NM']"); // Radial button for Near Mint condition cards
-	private By conPlayed = By.xpath("//label[text()='PL']"); // Radial button for Played condition cards
-	private By nonfoil = By.xpath("//label[text()='Non-Foil']"); // Radial button for Non-foil cards
-	private By foil = By.xpath("//label[text()='Foil']"); // Radial button for Foil cards
+	//private By conNearmint = By.xpath("//label[text()='NM']"); // Radial button for Near Mint condition cards
+	//private By conPlayed = By.xpath("//label[text()='PL']"); // Radial button for Played condition cards
+	//private By nonfoil = By.xpath("//label[text()='Non-Foil']"); // Radial button for Non-foil cards
+	//private By foil = By.xpath("//label[text()='Foil']"); // Radial button for Foil cards
 	
 	// private By quantityField = By.xpath("//div[@class='card-action']/input[@class='form-input']"); // This xpath will grab all the quantity fields for all items(cards)
 	
@@ -111,15 +111,41 @@ public class BuylistPage extends BasePageObject{
 		
 		// Have to be declared here because they become stale :(
 		List<WebElement> allCards = driver.findElements(By.xpath("//li[@class='product']"));
-		List<WebElement> cardEditions = driver.findElements(By.xpath("//p[@class='card-set']")); 
+		List<WebElement> cardEditions = driver.findElements(By.xpath("//p[@class='card-set']"));
 		
-        int quant = Integer.parseInt(quantity);
+		// Don't need these below as I forgot the .csv doesn't have a condition header
+		// All cards will be assumed to be Near Mint as it is likely that there will be more Near Mint then Played
+		//By conNearmintButton = By.xpath("//label[text()='NM']");
+		//By conPlayedButton = By.xpath("//label[text()='PL']");
+		
+		// Radial buttons for foil types
+		// BEHOLD. The monster that WotC has created.
+		// There's more types of foil that will be added on when I run into them
+		By nonfoilButton = By.xpath("//label[text()='Non-Foil']");
+		By foilButton = By.xpath("//label[text()='Foil']");
+		By etchedfoilButton = By.xpath("//label[text()='Etched Foil']");
+		By texturedfoilButton = By.xpath("//label[text()='Textured Foil']");
+		By oilslickfoilButton = By.xpath("//label[text()='Oil Slick Foil']");
+		List<By> allFoils = new ArrayList<>();
+		allFoils.add(nonfoilButton);
+		allFoils.add(foilButton);
+		allFoils.add(etchedfoilButton);
+		allFoils.add(texturedfoilButton);
+		allFoils.add(oilslickfoilButton);
+		
+		By sellButton = By.xpath("//svg[@class='icon icon-sell']"); // TO DO: Find the right xpath for the Sell button
+		
+        //int quant = Integer.parseInt(quantity);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
         
         for(int i = 0; i < cardEditions.size(); i++) {
         	String currentEdition = cardEditions.get(i).getText();
         	if(currentEdition.equals(edition)) {
-        		System.out.println("Current edition is: " + edition);
+        		// Select the right Foil type
+        		
+        		// Type in the number of cards
+        		
+        		// Press the Sell button
         	}
         }
 	}
