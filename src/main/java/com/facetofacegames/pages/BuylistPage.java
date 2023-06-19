@@ -1,10 +1,10 @@
 package com.facetofacegames.pages;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,12 +12,10 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 
-import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
@@ -110,8 +108,9 @@ public class BuylistPage extends BasePageObject{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		
 		// Have to be declared here because they become stale :(
-		List<WebElement> allCards = driver.findElements(By.xpath("//li[@class='product']"));
-		List<WebElement> cardEditions = driver.findElements(By.xpath("//p[@class='card-set']"));
+		List<WebElement> allCards = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[@class='product']")));
+		List<WebElement> cardEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']"))); // driver.findElements(By.xpath("//p[@class='card-set']"));
+		
 		
 		// Don't need these below as I forgot the .csv doesn't have a condition header
 		// All cards will be assumed to be Near Mint as it is likely that there will be more Near Mint then Played
@@ -121,19 +120,20 @@ public class BuylistPage extends BasePageObject{
 		// Radial buttons for foil types
 		// BEHOLD. The monster that WotC has created.
 		// There's more types of foil that will be added on when I run into them
-		By nonfoilButton = By.xpath("//label[text()='Non-Foil']");
-		By foilButton = By.xpath("//label[text()='Foil']");
-		By etchedfoilButton = By.xpath("//label[text()='Etched Foil']");
-		By texturedfoilButton = By.xpath("//label[text()='Textured Foil']");
-		By oilslickfoilButton = By.xpath("//label[text()='Oil Slick Foil']");
-		List<By> allFoils = new ArrayList<>();
-		allFoils.add(nonfoilButton);
-		allFoils.add(foilButton);
-		allFoils.add(etchedfoilButton);
-		allFoils.add(texturedfoilButton);
-		allFoils.add(oilslickfoilButton);
+		//WebElement nonfoilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Non-Foil']"))); 
+		//WebElement foilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Foil']"))); 
+		//WebElement etchedfoilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Etched Foil']"))); 
+		//WebElement texturedfoilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Textured Foil']"))); 
+		//WebElement oilslickfoilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Oil Slick Foil']"))); 
+		//List<WebElement> allFoils = new ArrayList<>(); 
+		//allFoils.add(nonfoilButton); 
+		//allFoils.add(foilButton);
+		//allFoils.add(etchedfoilButton); 
+		//allFoils.add(texturedfoilButton);
+		//allFoils.add(oilslickfoilButton);
+		 
 		
-		By sellButton = By.xpath("//svg[@class='icon icon-sell']"); // TO DO: Find the right xpath for the Sell button
+		By sellButton = By.xpath("//svg[@class='icon icon-sell']"); // TO DO: Find the right xpath for the Sell button. This xpath does not work.
 		
         //int quant = Integer.parseInt(quantity);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
@@ -142,6 +142,7 @@ public class BuylistPage extends BasePageObject{
         	String currentEdition = cardEditions.get(i).getText();
         	if(currentEdition.equals(edition)) {
         		// Select the right Foil type
+        		// Might be able to use article[@data-name='cardname [edtion]'
         		
         		// Type in the number of cards
         		
