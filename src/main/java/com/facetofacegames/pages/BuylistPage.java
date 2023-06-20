@@ -142,7 +142,19 @@ public class BuylistPage extends BasePageObject{
         	String currentEdition = cardEditions.get(i).getText();
         	if(currentEdition.equals(edition)) {
         		// Select the right Foil type
-        		// Might be able to use article[@data-name='cardname [edtion]'
+        		// Might be able to use article[@data-name='cardname [edtion]', and then grab label child nodes for foils?
+        		// "//article[@data-name='Emrakul, the Aeons Torn [Rise Of The Eldrazi]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-Non-Foil']/label"  DOESN'T WORK
+        		/** 
+        		*	"//article[contains(@data-name, 'Kozilek, Butcher of Truth') and contains(@data-name, 'Rise Of The Eldrazi')]/div[@class='card-finish']/div[@class='finish-option item-option card-option-Foil']/label"
+        		*	Works, but every WotC uses uppercase and lowercase for beginning of each word in the edition with very little care and it's causing much trouble in the xpath.
+        		*	Need to work on contains(@data-name, 'edition') for case sensitive stuff.
+        		*/
+        		
+        		
+        		String foilXpath = "//article[@data-name='" + cardName + " [" + edition + "]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
+        		System.out.println("Foil xpath is: " + foilXpath);
+        		//WebElement inputFoil = driver.findElement(By.xpath("//article[@data-name='Emrakul, the Aeons Torn [" + edition "]']/div[@class='card-finish']/div" + ));
+        		
         		
         		// Type in the number of cards
         		
