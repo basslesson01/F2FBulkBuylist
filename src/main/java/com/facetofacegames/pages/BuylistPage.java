@@ -103,6 +103,16 @@ public class BuylistPage extends BasePageObject{
 		click(searchButton);
 	}
 	
+	//public WebElement xpathBuilder(String edition, String f2fAttribute, String foil) {
+	//	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	//	
+	//	WebElement attributeGrabber = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//article[@data-name]"))); //driver.findElement(By.xpath("//article[@data-name]"));
+	//	String currentCard = currentEdition;
+	//	String f2fAttributeValue = attributeGrabber.getAttribute("data-name");
+	//	
+	//	return ;
+	//}
+	
 	public void addToCart(String quantity, String cardName, String edition, String foil) {
 		searchCard(cardName);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -141,6 +151,10 @@ public class BuylistPage extends BasePageObject{
         for(int i = 0; i < cardEditions.size(); i++) {
         	String currentEdition = cardEditions.get(i).getText();
         	if(currentEdition.equals(edition)) {
+        		WebElement attributeGrabber = driver.findElement(By.xpath("//article[@data-name]"));
+        		String currentCard = currentEdition;
+        		String f2fAttributeValue = attributeGrabber.getAttribute("data-name");
+
         		// Select the right Foil type
         		// Might be able to use article[@data-name='cardname [edtion]', and then grab label child nodes for foils?
         		// "//article[@data-name='Emrakul, the Aeons Torn [Rise Of The Eldrazi]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-Non-Foil']/label"  DOESN'T WORK
@@ -148,13 +162,22 @@ public class BuylistPage extends BasePageObject{
         		*	"//article[contains(@data-name, 'Kozilek, Butcher of Truth') and contains(@data-name, 'Rise Of The Eldrazi')]/div[@class='card-finish']/div[@class='finish-option item-option card-option-Foil']/label"
         		*	Works, but every WotC uses uppercase and lowercase for beginning of each word in the edition with very little care and it's causing much trouble in the xpath.
         		*	Need to work on contains(@data-name, 'edition') for case sensitive stuff.
+        		*	
+        		*	"//article[contains(@data-name, 'Rise')]/div[@class='card-finish']/div[contains(@class, 'finish-option item-option card-option') and not(@style)]/label"
         		*/
         		
         		
-        		String foilXpath = "//article[@data-name='" + cardName + " [" + edition + "]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
-        		System.out.println("Foil xpath is: " + foilXpath);
-        		//WebElement inputFoil = driver.findElement(By.xpath("//article[@data-name='Emrakul, the Aeons Torn [" + edition "]']/div[@class='card-finish']/div" + ));
-        		
+        		//String foilXpath = "//article[@data-name='" + cardName + " [" + f2fAttributeValue + "]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
+        		String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
+        		System.out.println("foilXpath: " + foilXpath);
+        		WebElement foilType = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(foilXpath)));
+        		foilType.click();
+        		try {
+					Thread.sleep(1500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
         		
         		// Type in the number of cards
         		
