@@ -17,4 +17,4 @@ Good luck to everyone scanning their mountain of cards one by one.
 
 # TO DO
 Finish addToCart
-- Try to find correct label elements for foil types
+- Foil WebElement is still stale whenever assigning it to a variable.
