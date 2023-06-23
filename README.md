@@ -17,4 +17,4 @@ Good luck to everyone scanning their mountain of cards one by one.
 
 # TO DO
 Finish addToCart
-- Foil WebElement is still stale whenever assigning it to a variable.
+- Foil WebElement no longer stale from brute forcing retries, but now a String is stale?

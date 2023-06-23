@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -143,13 +144,50 @@ public class BuylistPage extends BasePageObject{
 		//allFoils.add(oilslickfoilButton);
 		 
 		
-		By sellButton = By.xpath("//svg[@class='icon icon-sell']"); // TO DO: Find the right xpath for the Sell button. This xpath does not work.
+		//By sellButton = By.xpath("//svg[@class='icon icon-sell']"); // TO DO: Find the right xpath for the Sell button. This xpath does not work.
 		
         //int quant = Integer.parseInt(quantity);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
         
         for(int i = 0; i < cardEditions.size(); i++) {
-        	String currentEdition = cardEditions.get(i).getText();
+        	// WHY IS THIS STALE?
+        	String currentEdition = null;
+        	int retryCount = 0;
+        	boolean success = false;
+        	while (retryCount < 3 && !success) {
+        	    try {
+        	        currentEdition = cardEditions.get(i).getText();
+        	        // Rest of your code for processing currentEdition
+        	        
+        	        // If the code reaches this point without throwing an exception, set success to true
+        	        success = true;
+        	    } catch (StaleElementReferenceException e) {
+        	        // Handle the exception (e.g., update the elements or wait before retrying)
+        	        retryCount++;
+        	        System.out.println("StaleElementReferenceException occurred. Retrying attempt " + retryCount);
+        	        
+        	        // Update the elements
+        	        cardEditions = driver.findElements(By.xpath("//div[@class='card-edition']"));
+        	        
+        	        // You can also wait for a short duration before retrying
+        	        try {
+        	            Thread.sleep(1000); // Wait for 1 second before retrying
+        	        } catch (InterruptedException ex) {
+        	            Thread.currentThread().interrupt();
+        	        }
+        	    }
+        	}
+
+        	// Access the currentEdition variable in the subsequent method
+        	if (success) {
+        	    String f2fAttributeValue = getCurrentF2FAttributeValue(currentEdition);
+        	    // Rest of your code using f2fAttributeValue
+        	} else {
+        	    // Handle the case when all retries failed
+        	    System.out.println("Failed to retrieve currentEdition after multiple retries.");
+        	}
+        	//String currentEdition = cardEditions.get(i).getText();
+        	
         	if(currentEdition.equals(edition)) {
         		WebElement attributeGrabber = driver.findElement(By.xpath("//article[@data-name]"));
         		String currentCard = currentEdition;
@@ -170,20 +208,36 @@ public class BuylistPage extends BasePageObject{
         		//String foilXpath = "//article[@data-name='" + cardName + " [" + f2fAttributeValue + "]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
         		String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
         		System.out.println("foilXpath: " + foilXpath);
-        		WebElement foilType = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(foilXpath)));
-        		foilType.click();
-        		try {
-					Thread.sleep(1500);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+        		clickFoilType(foilXpath);
         		
         		// Type in the number of cards
         		
         		// Press the Sell button
         	}
         }
+	}
+	
+	public boolean clickFoilType(String xpath) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		
+		boolean outcome = false;
+		int retry = 0;
+		
+		// Face2face website is just awful. Brute force retry.
+		while(retry < 10) {
+			try {
+				WebElement foilType = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+				foilType.click();
+				outcome = true;
+				System.out.println("YAAAAAAAAAAAAAY");
+				break;
+			} catch(StaleElementReferenceException e) {
+				e.printStackTrace();
+			}
+			retry++;
+		}
+		
+		return outcome;
 	}
 
 }
