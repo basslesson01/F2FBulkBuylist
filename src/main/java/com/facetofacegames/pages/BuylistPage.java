@@ -120,7 +120,7 @@ public class BuylistPage extends BasePageObject{
 		
 		// Have to be declared here because they become stale :(
 		List<WebElement> allCards = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[@class='product']")));
-		List<WebElement> cardEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']"))); // driver.findElements(By.xpath("//p[@class='card-set']"));
+		List<WebElement> staleEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']"))); // driver.findElements(By.xpath("//p[@class='card-set']"));
 		
 		
 		// Don't need these below as I forgot the .csv doesn't have a condition header
@@ -142,51 +142,16 @@ public class BuylistPage extends BasePageObject{
 		//allFoils.add(etchedfoilButton); 
 		//allFoils.add(texturedfoilButton);
 		//allFoils.add(oilslickfoilButton);
-		 
 		
 		//By sellButton = By.xpath("//svg[@class='icon icon-sell']"); // TO DO: Find the right xpath for the Sell button. This xpath does not work.
 		
         //int quant = Integer.parseInt(quantity);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
         
-        for(int i = 0; i < cardEditions.size(); i++) {
-        	// WHY IS THIS STALE?
-        	String currentEdition = null;
-        	int retryCount = 0;
-        	boolean success = false;
-        	while (retryCount < 3 && !success) {
-        	    try {
-        	        currentEdition = cardEditions.get(i).getText();
-        	        // Rest of your code for processing currentEdition
-        	        
-        	        // If the code reaches this point without throwing an exception, set success to true
-        	        success = true;
-        	    } catch (StaleElementReferenceException e) {
-        	        // Handle the exception (e.g., update the elements or wait before retrying)
-        	        retryCount++;
-        	        System.out.println("StaleElementReferenceException occurred. Retrying attempt " + retryCount);
-        	        
-        	        // Update the elements
-        	        cardEditions = driver.findElements(By.xpath("//div[@class='card-edition']"));
-        	        
-        	        // You can also wait for a short duration before retrying
-        	        try {
-        	            Thread.sleep(1000); // Wait for 1 second before retrying
-        	        } catch (InterruptedException ex) {
-        	            Thread.currentThread().interrupt();
-        	        }
-        	    }
-        	}
-
-        	// Access the currentEdition variable in the subsequent method
-        	if (success) {
-        	    String f2fAttributeValue = getCurrentF2FAttributeValue(currentEdition);
-        	    // Rest of your code using f2fAttributeValue
-        	} else {
-        	    // Handle the case when all retries failed
-        	    System.out.println("Failed to retrieve currentEdition after multiple retries.");
-        	}
-        	//String currentEdition = cardEditions.get(i).getText();
+        for(int i = 0; i < staleEditions.size(); i++) {
+        	List<WebElement> cardEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']")));
+        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
+        	String currentEdition = cardEditions.get(i).getText();
         	
         	if(currentEdition.equals(edition)) {
         		WebElement attributeGrabber = driver.findElement(By.xpath("//article[@data-name]"));

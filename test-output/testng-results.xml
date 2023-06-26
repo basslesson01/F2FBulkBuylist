@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-22T21:12:20 ADT" name="Debug" finished-at="2023-06-22T21:12:32 ADT" duration-ms="12546">
+  <suite started-at="2023-06-26T17:48:21 ADT" name="Debug" finished-at="2023-06-26T17:48:32 ADT" duration-ms="10580">
     <groups>
     </groups>
-    <test started-at="2023-06-22T21:12:20 ADT" name="Buylist Upload" finished-at="2023-06-22T21:12:32 ADT" duration-ms="12546">
+    <test started-at="2023-06-26T17:48:21 ADT" name="Buylist Upload" finished-at="2023-06-26T17:48:32 ADT" duration-ms="10580">
       <class name="com.facetofacegames.UploadBuylist">
-        <test-method is-config="true" signature="setUp(java.lang.reflect.Method,java.lang.String,java.lang.String,java.lang.String,org.testng.ITestContext)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-22T21:12:19 ADT" name="setUp" finished-at="2023-06-22T21:12:20 ADT" duration-ms="1310" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.reflect.Method,java.lang.String,java.lang.String,java.lang.String,org.testng.ITestContext)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-26T17:48:20 ADT" name="setUp" finished-at="2023-06-26T17:48:21 ADT" duration-ms="1206" status="PASS">
           <params>
             <param index="0">
               <value is-null="true"/>
@@ -25,14 +25,14 @@
             </param>
             <param index="4">
               <value>
-                <![CDATA[org.testng.TestRunner@1d247525]]>
+                <![CDATA[org.testng.TestRunner@367d34c0]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-22T21:12:20 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-22T21:12:24 ADT" duration-ms="4025" status="PASS">
+        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-26T17:48:21 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-26T17:48:25 ADT" duration-ms="4091" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -58,7 +58,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- uploadBuylist -->
-        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-22T21:12:24 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-22T21:12:26 ADT" duration-ms="2127" status="PASS">
+        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-26T17:48:25 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-26T17:48:28 ADT" duration-ms="2597" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -84,7 +84,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- uploadBuylist -->
-        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-22T21:12:26 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-22T21:12:30 ADT" duration-ms="3707" status="PASS">
+        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-26T17:48:28 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-26T17:48:30 ADT" duration-ms="1829" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -110,7 +110,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- uploadBuylist -->
-        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-22T21:12:30 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-22T21:12:32 ADT" duration-ms="2656" status="PASS">
+        <test-method signature="uploadBuylist(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-26T17:48:30 ADT" name="uploadBuylist" data-provider="csvData" finished-at="2023-06-26T17:48:32 ADT" duration-ms="2032" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -136,7 +136,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- uploadBuylist -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-22T21:12:32 ADT" name="tearDown" finished-at="2023-06-22T21:12:33 ADT" duration-ms="135" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.facetofacegames.UploadBuylist@5e0e82ae]" started-at="2023-06-26T17:48:32 ADT" name="tearDown" finished-at="2023-06-26T17:48:32 ADT" duration-ms="96" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
