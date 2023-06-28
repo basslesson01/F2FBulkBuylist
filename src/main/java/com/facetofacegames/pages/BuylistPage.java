@@ -119,29 +119,8 @@ public class BuylistPage extends BasePageObject{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		
 		// Have to be declared here because they become stale :(
-		List<WebElement> allCards = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[@class='product']")));
+		//List<WebElement> allCards = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[@class='product']")));
 		List<WebElement> staleEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']"))); // driver.findElements(By.xpath("//p[@class='card-set']"));
-		
-		
-		// Don't need these below as I forgot the .csv doesn't have a condition header
-		// All cards will be assumed to be Near Mint as it is likely that there will be more Near Mint then Played
-		//By conNearmintButton = By.xpath("//label[text()='NM']");
-		//By conPlayedButton = By.xpath("//label[text()='PL']");
-		
-		// Radial buttons for foil types
-		// BEHOLD. The monster that WotC has created.
-		// There's more types of foil that will be added on when I run into them
-		//WebElement nonfoilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Non-Foil']"))); 
-		//WebElement foilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Foil']"))); 
-		//WebElement etchedfoilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Etched Foil']"))); 
-		//WebElement texturedfoilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Textured Foil']"))); 
-		//WebElement oilslickfoilButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Oil Slick Foil']"))); 
-		//List<WebElement> allFoils = new ArrayList<>(); 
-		//allFoils.add(nonfoilButton); 
-		//allFoils.add(foilButton);
-		//allFoils.add(etchedfoilButton); 
-		//allFoils.add(texturedfoilButton);
-		//allFoils.add(oilslickfoilButton);
 		
 		//By sellButton = By.xpath("//svg[@class='icon icon-sell']"); // TO DO: Find the right xpath for the Sell button. This xpath does not work.
 		
@@ -150,8 +129,10 @@ public class BuylistPage extends BasePageObject{
         
         for(int i = 0; i < staleEditions.size(); i++) {
         	List<WebElement> cardEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']")));
+        	WebElement lastCard= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@class='product'][last()]")));
         	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
-        	String currentEdition = cardEditions.get(i).getText();
+        	
+        	String currentEdition = cardEditions.get(i).getText(); // S T A L E
         	
         	if(currentEdition.equals(edition)) {
         		WebElement attributeGrabber = driver.findElement(By.xpath("//article[@data-name]"));
@@ -173,12 +154,13 @@ public class BuylistPage extends BasePageObject{
         		//String foilXpath = "//article[@data-name='" + cardName + " [" + f2fAttributeValue + "]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
         		String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
         		System.out.println("foilXpath: " + foilXpath);
-        		clickFoilType(foilXpath);
+        		//clickFoilType(foilXpath);
         		
         		// Type in the number of cards
         		
         		// Press the Sell button
         	}
+        	
         }
 	}
 	
