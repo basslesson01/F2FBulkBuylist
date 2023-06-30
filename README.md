@@ -17,5 +17,4 @@ Good luck to everyone scanning their mountain of cards one by one.
 
 # TO DO
 Finish addToCart
-- (SOLVED)Foil WebElement no longer stale from brute forcing retries, but now a String is stale?
-- Click the right foil type.
+- STALE

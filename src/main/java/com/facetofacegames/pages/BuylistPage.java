@@ -5,11 +5,13 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -129,10 +131,15 @@ public class BuylistPage extends BasePageObject{
         
         for(int i = 0; i < staleEditions.size(); i++) {
         	List<WebElement> cardEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']")));
+    		
         	WebElement lastCard= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@class='product'][last()]")));
         	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
         	
-        	String currentEdition = cardEditions.get(i).getText(); // S T A L E
+        	//div[@style='width: 100%; height: 0px;']
+        	//String currentEdition = cardEditions.get(i).getText(); // S T A L E
+        	WebElement temp = cardEditions.get(i);
+        	String currentEdition = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].textContent;", temp);
+        	System.out.println("Temp: " + currentEdition);
         	
         	if(currentEdition.equals(edition)) {
         		WebElement attributeGrabber = driver.findElement(By.xpath("//article[@data-name]"));
