@@ -128,8 +128,34 @@ public class BuylistPage extends BasePageObject{
 		
         //int quant = Integer.parseInt(quantity);
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
-        
         for(int i = 0; i < staleEditions.size(); i++) {
+        	try {
+                List<WebElement> cardEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']")));
+                WebElement lastCard = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@class='product'][last()]")));
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));
+
+                WebElement temp = cardEditions.get(i);
+                String currentEdition = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].textContent;", temp);
+                System.out.println("Temp: " + currentEdition);
+
+                if (currentEdition.equals(edition)) {
+                    WebElement attributeGrabber = driver.findElement(By.xpath("//article[@data-name]"));
+                    String currentCard = currentEdition;
+                    String f2fAttributeValue = attributeGrabber.getAttribute("data-name");
+
+                    String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
+                    System.out.println("foilXpath: " + foilXpath);
+                    // clickFoilType(foilXpath);
+
+                    // Type in the number of cards
+
+                    // Press the Sell button
+                }
+            } catch (StaleElementReferenceException e) {
+                System.out.println("StaleElementReferenceException occurred. Retrying...");
+                i--; // Decrement i to retry processing the same index
+            }
+        	/**
         	List<WebElement> cardEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']")));
     		
         	WebElement lastCard= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@class='product'][last()]")));
@@ -149,13 +175,13 @@ public class BuylistPage extends BasePageObject{
         		// Select the right Foil type
         		// Might be able to use article[@data-name='cardname [edtion]', and then grab label child nodes for foils?
         		// "//article[@data-name='Emrakul, the Aeons Torn [Rise Of The Eldrazi]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-Non-Foil']/label"  DOESN'T WORK
-        		/** 
-        		*	"//article[contains(@data-name, 'Kozilek, Butcher of Truth') and contains(@data-name, 'Rise Of The Eldrazi')]/div[@class='card-finish']/div[@class='finish-option item-option card-option-Foil']/label"
-        		*	Works, but every WotC uses uppercase and lowercase for beginning of each word in the edition with very little care and it's causing much trouble in the xpath.
-        		*	Need to work on contains(@data-name, 'edition') for case sensitive stuff.
-        		*	
-        		*	"//article[contains(@data-name, 'Rise')]/div[@class='card-finish']/div[contains(@class, 'finish-option item-option card-option') and not(@style)]/label"
-        		*/
+        		
+        		//"//article[contains(@data-name, 'Kozilek, Butcher of Truth') and contains(@data-name, 'Rise Of The Eldrazi')]/div[@class='card-finish']/div[@class='finish-option item-option card-option-Foil']/label"
+        		//Works, but every WotC uses uppercase and lowercase for beginning of each word in the edition with very little care and it's causing much trouble in the xpath.
+        		//Need to work on contains(@data-name, 'edition') for case sensitive stuff.
+        		
+        		//"//article[contains(@data-name, 'Rise')]/div[@class='card-finish']/div[contains(@class, 'finish-option item-option card-option') and not(@style)]/label"
+        		
         		
         		
         		//String foilXpath = "//article[@data-name='" + cardName + " [" + f2fAttributeValue + "]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
@@ -166,9 +192,10 @@ public class BuylistPage extends BasePageObject{
         		// Type in the number of cards
         		
         		// Press the Sell button
-        	}
+        	}**/
         	
         }
+		
 	}
 	
 	public boolean clickFoilType(String xpath) {
