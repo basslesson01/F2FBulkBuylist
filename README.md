@@ -17,4 +17,4 @@ Good luck to everyone scanning their mountain of cards one by one.
 
 # TO DO
 Finish addToCart
-- STALE
+- Quantity field
