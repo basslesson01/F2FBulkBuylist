@@ -146,18 +146,16 @@ public class BuylistPage extends BasePageObject{
                     String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
                     System.out.println("foilXpath: " + foilXpath);
                     clickFoilType(foilXpath);
-
-                    // Type in the number of cards
-                    WebElement numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='card-action']/input[@class='form-input']")));
-                    numField.clear();
-                    numField.sendKeys(quantity);
-                    try {
-						Thread.sleep(3000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
                     
+                    try {
+                    	// Type in the number of cards
+                    	WebElement numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='card-action']/input[@class='form-input']")));
+                    	numField.clear();
+                    	numField.sendKeys(quantity);
+                    } catch (StaleElementReferenceException e) {
+                        System.out.println("Sending keys failed. Retrying...");
+                        i--; // Decrement i to retry processing the same index
+                    }
                     // Press the Sell button
                 }
             } catch (StaleElementReferenceException e) {
@@ -219,7 +217,7 @@ public class BuylistPage extends BasePageObject{
 				WebElement foilType = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 				foilType.click();
 				outcome = true;
-				wait.until(ExpectedConditions.elementSelectionStateToBe(foilType, true));
+				//wait.until(ExpectedConditions.elementSelectionStateToBe(foilType, true));
 				System.out.println("YAAAAAAAAAAAAAY");
 				break;
 			} catch(StaleElementReferenceException e) {
