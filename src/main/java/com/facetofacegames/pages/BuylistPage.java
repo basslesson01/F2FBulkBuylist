@@ -150,8 +150,11 @@ public class BuylistPage extends BasePageObject{
                     try {
                     	// Type in the number of cards
                     	WebElement numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='card-action']/input[@class='form-input']")));
+                    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(numField)));
                     	numField.clear();
                     	numField.sendKeys(quantity);
+                    	
+                    	sleep(1500);
                     } catch (StaleElementReferenceException e) {
                         System.out.println("Sending keys failed. Retrying...");
                         i--; // Decrement i to retry processing the same index
@@ -227,6 +230,17 @@ public class BuylistPage extends BasePageObject{
 		}
 		
 		return outcome;
+	}
+	
+	
+	
+	protected void sleep(long m) {
+		try {
+			Thread.sleep(m);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

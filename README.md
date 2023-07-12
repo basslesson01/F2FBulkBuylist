@@ -18,3 +18,4 @@ Good luck to everyone scanning their mountain of cards one by one.
 # TO DO
 Finish addToCart
 - Quantity field. F2F refreshes itself for no reason, need to fix.
+	- Still working on it
