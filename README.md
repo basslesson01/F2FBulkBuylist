@@ -19,3 +19,4 @@ Good luck to everyone scanning their mountain of cards one by one.
 Finish addToCart
 - Quantity field. F2F refreshes itself for no reason, need to fix.
 	- Still working on it
+- Incorrect set is being touched. Need to fix.

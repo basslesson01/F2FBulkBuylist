@@ -149,12 +149,17 @@ public class BuylistPage extends BasePageObject{
                     
                     try {
                     	// Type in the number of cards
-                    	WebElement numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='card-action']/input[@class='form-input']")));
-                    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(numField)));
-                    	numField.clear();
-                    	numField.sendKeys(quantity);
+                    	WebDriverWait cardWait = new WebDriverWait(driver, Duration.ofSeconds(5)); // Create a new WebDriverWait instance
+                    	//WebElement numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='card-action']/input[@class='form-input']")));
+                    	WebElement numField = cardWait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='card-action']/input[@class='form-input'])[" + (i + 1) + "]")));
+                        wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(numField)));
+
+                        // Re-fetch the numField element after the refreshing is done
+                        //numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='card-action']/input[@class='form-input']")));
+                        numField = cardWait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='card-action']/input[@class='form-input'])[" + (i + 1) + "]")));
+                        numField.clear();
+                        numField.sendKeys(quantity);
                     	
-                    	sleep(1500);
                     } catch (StaleElementReferenceException e) {
                         System.out.println("Sending keys failed. Retrying...");
                         i--; // Decrement i to retry processing the same index
