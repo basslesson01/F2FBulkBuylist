@@ -119,6 +119,7 @@ public class BuylistPage extends BasePageObject{
 	public void addToCart(String quantity, String cardName, String edition, String foil) {
 		searchCard(cardName);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		sleep(2000);
 		
 		// Have to be declared here because they become stale :(
 		//List<WebElement> allCards = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[@class='product']")));
@@ -139,26 +140,37 @@ public class BuylistPage extends BasePageObject{
                 System.out.println("Temp: " + currentEdition);
 
                 if (currentEdition.equals(edition)) {
+                	/**
                     WebElement attributeGrabber = driver.findElement(By.xpath("//article[@data-name]"));
                     String currentCard = currentEdition;
                     String f2fAttributeValue = attributeGrabber.getAttribute("data-name");
+                    
+                    String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
+                    System.out.println("foilXpath: " + foilXpath);
+                    clickFoilType(foilXpath);
+                    **/
+                	
+                	// This seems to work?
+                	// Get the corresponding card using the index 'i'
+                    WebElement card = driver.findElement(By.xpath("(//article[@data-name])[position()=" + (i + 1) + "]"));
 
+                    String f2fAttributeValue = card.getAttribute("data-name"); // Get the specific edition's data-name attribute
                     String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
                     System.out.println("foilXpath: " + foilXpath);
                     clickFoilType(foilXpath);
                     
                     try {
                     	// Type in the number of cards
-                    	WebDriverWait cardWait = new WebDriverWait(driver, Duration.ofSeconds(5)); // Create a new WebDriverWait instance
                     	//WebElement numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='card-action']/input[@class='form-input']")));
-                    	WebElement numField = cardWait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='card-action']/input[@class='form-input'])[" + (i + 1) + "]")));
-                        wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(numField)));
+                    	WebElement numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='card-action']/input[@class='form-input'])[" + (i + 1) + "]")));
+                        //wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(numField)));
 
                         // Re-fetch the numField element after the refreshing is done
                         //numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='card-action']/input[@class='form-input']")));
-                        numField = cardWait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='card-action']/input[@class='form-input'])[" + (i + 1) + "]")));
+                        numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='card-action']/input[@class='form-input'])[" + (i + 1) + "]")));
                         numField.clear();
                         numField.sendKeys(quantity);
+                        sleep(3000);
                     	
                     } catch (StaleElementReferenceException e) {
                         System.out.println("Sending keys failed. Retrying...");

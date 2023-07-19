@@ -18,5 +18,7 @@ Good luck to everyone scanning their mountain of cards one by one.
 # TO DO
 Finish addToCart
 - Quantity field. F2F refreshes itself for no reason, need to fix.
-	- Still working on it
+	- Might be fixed
 - Incorrect set is being touched. Need to fix.
+	- Might be fixed
+- If both of the above work to satisfying degree, then start working on the Sell button
