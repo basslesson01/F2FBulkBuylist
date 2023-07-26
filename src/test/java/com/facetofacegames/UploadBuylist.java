@@ -1,9 +1,12 @@
 package com.facetofacegames;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,6 +28,7 @@ public class UploadBuylist extends TestUtilities{
 		
 		log.info("Starting test");
 		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		BuylistPage buylistPage = new BuylistPage(driver, log);
 		
 		buylistPage.openPage();
@@ -52,6 +56,9 @@ public class UploadBuylist extends TestUtilities{
         System.out.println("Edition: " + edition);
         System.out.println("Foil: " + foil);
         
+        //WebElement cartButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='navUser-item-cartLabel']")));
+        //cartButton.click();
+        //sleep(3000);
 	}
 
 }

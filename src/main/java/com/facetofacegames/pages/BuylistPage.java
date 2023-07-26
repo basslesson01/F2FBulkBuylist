@@ -140,21 +140,14 @@ public class BuylistPage extends BasePageObject{
                 System.out.println("Temp: " + currentEdition);
 
                 if (currentEdition.equals(edition)) {
-                	/**
-                    WebElement attributeGrabber = driver.findElement(By.xpath("//article[@data-name]"));
-                    String currentCard = currentEdition;
-                    String f2fAttributeValue = attributeGrabber.getAttribute("data-name");
-                    
-                    String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
-                    System.out.println("foilXpath: " + foilXpath);
-                    clickFoilType(foilXpath);
-                    **/
-                	
+
                 	// This seems to work?
                 	// Get the corresponding card using the index 'i'
                     WebElement card = driver.findElement(By.xpath("(//article[@data-name])[position()=" + (i + 1) + "]"));
 
                     String f2fAttributeValue = card.getAttribute("data-name"); // Get the specific edition's data-name attribute
+                    
+                    // For unknown reasons, F2F likes to add random brackets and numbers to their Editions, so the below xpath builder is needed
                     String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
                     System.out.println("foilXpath: " + foilXpath);
                     clickFoilType(foilXpath);
@@ -170,8 +163,11 @@ public class BuylistPage extends BasePageObject{
                         numField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='card-action']/input[@class='form-input'])[" + (i + 1) + "]")));
                         numField.clear();
                         numField.sendKeys(quantity);
-                        sleep(3000);
-                    	
+                        
+                        WebElement sellButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@type='button'])[" + (i + 1) + "]")));
+                        sellButton.click();
+                    	sleep(3000);
+                        
                     } catch (StaleElementReferenceException e) {
                         System.out.println("Sending keys failed. Retrying...");
                         i--; // Decrement i to retry processing the same index
@@ -182,44 +178,6 @@ public class BuylistPage extends BasePageObject{
                 System.out.println("StaleElementReferenceException occurred. Retrying...");
                 i--; // Decrement i to retry processing the same index
             }
-        	/**
-        	List<WebElement> cardEditions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='card-set']")));
-    		
-        	WebElement lastCard= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@class='product'][last()]")));
-        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='form-label']")));  // The element for the word "FILTER". Just to make sure that the result page has loaded.
-        	
-        	//div[@style='width: 100%; height: 0px;']
-        	//String currentEdition = cardEditions.get(i).getText(); // S T A L E
-        	WebElement temp = cardEditions.get(i);
-        	String currentEdition = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].textContent;", temp);
-        	System.out.println("Temp: " + currentEdition);
-        	
-        	if(currentEdition.equals(edition)) {
-        		WebElement attributeGrabber = driver.findElement(By.xpath("//article[@data-name]"));
-        		String currentCard = currentEdition;
-        		String f2fAttributeValue = attributeGrabber.getAttribute("data-name");
-
-        		// Select the right Foil type
-        		// Might be able to use article[@data-name='cardname [edtion]', and then grab label child nodes for foils?
-        		// "//article[@data-name='Emrakul, the Aeons Torn [Rise Of The Eldrazi]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-Non-Foil']/label"  DOESN'T WORK
-        		
-        		//"//article[contains(@data-name, 'Kozilek, Butcher of Truth') and contains(@data-name, 'Rise Of The Eldrazi')]/div[@class='card-finish']/div[@class='finish-option item-option card-option-Foil']/label"
-        		//Works, but every WotC uses uppercase and lowercase for beginning of each word in the edition with very little care and it's causing much trouble in the xpath.
-        		//Need to work on contains(@data-name, 'edition') for case sensitive stuff.
-        		
-        		//"//article[contains(@data-name, 'Rise')]/div[@class='card-finish']/div[contains(@class, 'finish-option item-option card-option') and not(@style)]/label"
-        		
-        		
-        		
-        		//String foilXpath = "//article[@data-name='" + cardName + " [" + f2fAttributeValue + "]']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
-        		String foilXpath = "//article[@data-name='" + f2fAttributeValue + "']/div[@class='card-finish']/div[@class='finish-option item-option card-option-" + foil + "']/label";
-        		System.out.println("foilXpath: " + foilXpath);
-        		//clickFoilType(foilXpath);
-        		
-        		// Type in the number of cards
-        		
-        		// Press the Sell button
-        	}**/
         	
         }
 		
