@@ -17,4 +17,4 @@ Good luck to everyone scanning their mountain of cards one by one.
 
 # TO DO
 Finish addToCart
-- Make everything add to cart.
+- Test list with post 2010 cards work, but older cards are causing trouble.

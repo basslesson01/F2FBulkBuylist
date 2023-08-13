@@ -29,6 +29,7 @@ public class BuylistLandingPage extends BasePageObject{
 		log.info("Page opened!");
 	}
 	
+	/**
 	public void searchCard(String cardName) {
 		click(searchField);
 		type(cardName, searchField);
@@ -59,5 +60,5 @@ public class BuylistLandingPage extends BasePageObject{
 
         return testData;
     }
-
+	**/
 }

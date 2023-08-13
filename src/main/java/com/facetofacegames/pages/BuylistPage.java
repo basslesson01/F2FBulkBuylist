@@ -70,7 +70,9 @@ public class BuylistPage extends BasePageObject{
             Object[] rowData = new Object[row.length];
 
             for (int j = 0; j < row.length; j++) {
-                rowData[j] = row[j].trim();
+                //rowData[j] = row[j].trim();
+            	String parsedValue = parseCSVLine(row[j].trim())[0]; // Parsing the CSV line
+                rowData[j] = parsedValue;
             }
 
             testData[i] = rowData;
@@ -106,15 +108,6 @@ public class BuylistPage extends BasePageObject{
 		click(searchButton);
 	}
 	
-	//public WebElement xpathBuilder(String edition, String f2fAttribute, String foil) {
-	//	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-	//	
-	//	WebElement attributeGrabber = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//article[@data-name]"))); //driver.findElement(By.xpath("//article[@data-name]"));
-	//	String currentCard = currentEdition;
-	//	String f2fAttributeValue = attributeGrabber.getAttribute("data-name");
-	//	
-	//	return ;
-	//}
 	
 	public void addToCart(String quantity, String cardName, String edition, String foil) {
 		searchCard(cardName);
